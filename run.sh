@@ -7,7 +7,7 @@ npm i
 npx babel main.js pipe.js utils.js ID3-tags.js isMainESM.js -d babel
 
 # generate JSDocs documentation files
-./node_modules/.bin/jsdoc main.js pipe.js utils.js ID3-tags.js isMainESM.js
+./node_modules/.bin/jsdoc --readme README.md main.js pipe.js utils.js ID3-tags.js isMainESM.js -d ./docs
 
 # add all tracked files
 git add .

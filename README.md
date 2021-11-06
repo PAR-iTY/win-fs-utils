@@ -1,4 +1,4 @@
-Personal CLI utilities for windows filesystem and ID3 tag batch editing
+# Personal CLI utilities for windows filesystem and ID3 tag batch editing
 
 includes glob search, path normalisation, mp3 metadata editing, shell and node.js argument handling, posix and win32 and \*nix paths, forbids windows system paths and more
 
@@ -9,7 +9,8 @@ pipe.js contains functions that run checks and alter input and return output
 utils.js contains functions that run checks and return booleans
 
 Project includes automated minification and documentation using Babel and JSDocs
-todo:
+
+## todo:
 
 - refactor init function to functionalise and for readability
 - add keyword search
