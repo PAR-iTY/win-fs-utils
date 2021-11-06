@@ -1,0 +1,1 @@
+import{fileURLToPath}from"url";import{extname}from"path";export default(a=>a&&(extname(process.argv[1])?`${process.argv[1]}`:`${process.argv[1]}.js`)===fileURLToPath(a));

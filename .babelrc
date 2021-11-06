@@ -1,0 +1,6 @@
+{
+  "comments": false,
+  "ignore": ["**/.*", "**/_*", "**/node_modules/*"],
+  "presets": [["minify"]],
+  "plugins": [["transform-remove-console", { "exclude": ["error"] }]]
+}
