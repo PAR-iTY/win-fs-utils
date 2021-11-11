@@ -359,7 +359,7 @@ const getFiles = (_path, ext, recurse) => {
     // this is a CLI tool for users, hide failure to access and move on
     strict: false,
     silent: true,
-    // if ext then need to only return files and not folders
+    // if ext is set then need to only return files and not folders
     // (avoids false-positive folders that end in an ext-like string)
     nodir: ext ? true : false,
     nocase: true,
@@ -445,7 +445,7 @@ const getFiles = (_path, ext, recurse) => {
   console.time('search execution time');
 
   try {
-    // make this and other sync calls async
+    // todo: make this and other sync calls async
     const files = glob.sync(`${_path}${recurse}${pattern}${ext}`, options);
 
     // console.log(

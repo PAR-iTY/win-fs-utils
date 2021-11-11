@@ -13,4 +13,4 @@ npx babel main.js pipe.js utils.js ID3-tags.js isMainESM.js -d babel
 git add .
 
 # commit all tracked files
-git commit -m "run.sh placeholder"
+# git commit -m "run.sh placeholder"
