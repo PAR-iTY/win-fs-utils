@@ -33,11 +33,6 @@ const tweakTags = (files, tag, find, replace) => {
       // console.log('calling tweakTagsObject..');
       // update tags object
 
-      // new idea: avoid writing whole tags object back to file
-      // 1) pass only necessary tags: (tags.tag, tag, tag.artist)
-      // 2) make changes to tag value
-      // 3) use NodeID3.update() with a custom object of just the changed tags
-      // 4) NodeID3.update( { tags.tag: updatedValue } )
       const tweakedTags = tweakTagsObject(tags, tag, find, replace);
       // const tweakedTags = tweakTagsObject(tags, tag, tags.artist, '');
 
@@ -67,50 +62,59 @@ const tweakTags = (files, tag, find, replace) => {
  * @return {Object} The updated ID3 tags object of an mp3 file.
  */
 const tweakTagsObject = (tags, tag, find, replace) => {
-  // console.log(`\ntags.${tag}:`, tags[`${tag}`]);
+  // console.log('tags: ', tags);
+  console.log(`tags.${tag}:`, tags[`${tag}`]);
 
-  // console.log('Contributing artists:', tags?.artist);
-  // console.log('Album artist:', tags?.performerInfo);
-
+  // ID3-tags.js will not be called if tag and replace args not supplied
+  // find arg is optional
   if (find) {
-    // console.log(`looking for '${find}' substring in '${tag}' tag`);
-    // then task is to match and edit an existing tag string
-    // attempted generalisation (update ' - ' suffix approach):
-    // tags[`${tag}`] = tags[`${tag}`].replace(`${find}`, replace);
-    // remove '[Artist] - ' prefix from song title
-  } else {
-    // dont do checks so deep in this loop-nested-function:
-    // eventually use a config object as an arg, much easier
-    // use properties to drive modes like artist/album
-    // can include presets like youtube-dl common mistakes
-    // artist name in title, clean youtube-id off (do in yt-dl args?)
+    // match and edit an existing tag string
+    console.log(`looking for '${find}' substring in '${tag}' tag..`);
 
-    // could strengthen this with substring matching
     if (tag.toLowerCase() === 'artist') {
-      // artist mode
+      // find and replace artist and contributing artist values
+      tags.artist = tags.artist.replace(`${find}`, replace);
+      tags.performerInfo = tags.performerInfo.replace(`${find}`, replace);
+    }
 
-      // replace contributing artists
+    // generalised find and replace method
+    tags[`${tag}`] = tags[`${tag}`].replace(`${find}`, replace);
+  } else {
+    // replace a tag value with a new value
+    if (tag.toLowerCase() === 'artist') {
+      // replace artist and contributing artist values
       tags.artist = replace;
-
-      // replace album artist
       tags.performerInfo = replace;
     } else {
-      // not artist mode
-      console.log('not artist mode');
-      // task is to simply replace a tag with a new string
+      // generalised replace method
       tags[`${tag}`] = replace;
     }
   }
-
-  // console.log('Contributing artists:', tags?.artist);
-  // console.log('Album artist:', tags?.performerInfo);
-
-  // console.log(`\ntags.${tag}:`, tags[`${tag}`]);
 
   return tags;
 };
 
 // --------------------------------------------------------------------------- //
+
+/**
+ * ID3 metadata editor.
+ *
+ * @module ID3-tags
+ *
+ * */
+export { tweakTags, tweakTagsObject };
+
+// --------------------------------------------------------------------------- //
+
+// new idea: avoid writing whole tags object back to file
+// 1) pass only necessary tags: (tags.tag, tag, tag.artist)
+// 2) make changes to tag value
+// 3) use NodeID3.update() with a custom object of just the changed tags
+// 4) NodeID3.update( { tags.tag: updatedValue } )
+// console.log('Contributing artists:', tags?.artist);
+// console.log('Album artist:', tags?.performerInfo);
+// then task is to match and edit an existing tag string
+// attempted generalisation (update ' - ' suffix approach):
 
 // test:
 // faster way to update metadata if the values are known before-hand
@@ -125,14 +129,15 @@ const tweakTagsObject = (tags, tag, find, replace) => {
 //   console.log('success:', success);
 // };
 
-// --------------------------------------------------------------------------- //
+// remove '[Artist] - ' prefix from song title
+// dont do checks so deep in this loop-nested-function:
+// eventually use a config object as an arg, much easier
+// use properties to drive modes like artist/album
+// can include presets like youtube-dl common mistakes
+// artist name in title, clean youtube-id off (do in yt-dl args?)
 
-/**
- * ID3 metadata editor.
- *
- * @module ID3-tags
- *
- * */
-export { tweakTags, tweakTagsObject };
+// console.log('Contributing artists:', tags?.artist);
+// console.log('Album artist:', tags?.performerInfo);
+// console.log(`\ntags.${tag}:`, tags[`${tag}`]);
 
 // --------------------------------------------------------------------------- //

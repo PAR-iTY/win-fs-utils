@@ -81,13 +81,14 @@ const init = async () => {
   console.log('files:', files);
 
   // move on to mp3 handling (functionalise)
-  if (
-    files.length &&
-    (args.ext === '.mp3' || extname(args.path).toLowerCase() === '.mp3')
-  ) {
-    console.log('extension is mp3 - passing to ID3-tags module..');
-
-    // tweakTags(files, 'artist', undefined, '');
+  // || extname(args.path).toLowerCase() === '.mp3'
+  if (files.length && args.ext === '.mp3') {
+    console.log('extension is mp3');
+    if (args.tagType && args.tagReplace) {
+      console.log('passing to ID3-tags module..');
+      // CLI params for tag-type, find-str, and replace-str
+      tweakTags(files, args.tagType, args.tagFind || undefined, args.tagReplace);
+    }
   }
 };
 
@@ -116,21 +117,27 @@ const argsHandle = async () => {
 
   // instantiate minimist args parser
   const args = minimist(process.argv.slice(2), { default: argDefaults });
-  // console.log('minimist args:', args);
+  console.log('minimist args:', args);
 
   // handle extension arg (uses minimist default empty string)
-
   // check if --ext (extension) flag was set
   if (args.hasOwnProperty('ext') && args.ext && args.ext !== true) {
-    console.log('ext detected:', ext);
+    console.log('ext detected:', args.ext);
+    // add dot to beginning of ext if needed
     if (args.ext[0] !== '.') {
-      // add dot to beginning of ext
       args.ext = '.' + args.ext;
     }
-    // normalise to lower case
-    // (relies on glob search being case-insensitive?)
-    args.ext = args.ext.toLowerCase();
+  } else if (args.hasOwnProperty('path') && extname(args.path)) {
+    // if not set --ext but path has an extension use that
+    // extname() always returns a dot .{ext} if an extension exists
+    args.ext = extname(args.path);
+  } else {
+    console.log('ext error', args.ext);
   }
+
+  // normalise to lower case
+  // (relies on glob search being case-insensitive?)
+  args.ext = args.ext.toLowerCase();
 
   // check if --recurse flag was set
   // this should just use minimist default args object at top of function
@@ -191,11 +198,6 @@ const argsHandle = async () => {
 
     args.path = await promptHandle();
     return args;
-  }
-
-  if (args.ext === '.mp3') {
-    console.log(args.artist);
-    console.log(args.album);
   }
 
   // generalised return

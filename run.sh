@@ -10,7 +10,10 @@ npx babel main.js pipe.js utils.js ID3-tags.js isMainESM.js -d babel
 ./node_modules/.bin/jsdoc --readme README.md main.js pipe.js utils.js ID3-tags.js isMainESM.js -d ./docs
 
 # add all tracked files
-git add .
+git add -A
 
 # commit all tracked files
-# git commit -m "run.sh placeholder"
+git commit -m "run.sh placeholder"
+
+# push to github
+git push origin main
