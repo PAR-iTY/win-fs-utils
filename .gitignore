@@ -1,0 +1,4 @@
+.vscode/
+_xs/
+node_modules/
+run.sh

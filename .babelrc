@@ -1,6 +1,15 @@
 {
   "comments": false,
   "ignore": ["**/.*", "**/_*", "**/node_modules/*"],
-  "presets": [["minify"]],
-  "plugins": [["transform-remove-console", { "exclude": ["error"] }]]
+  "plugins": ["@babel/plugin-transform-runtime"],
+  "presets": [
+    ["@babel/preset-env"
+      ,
+      {
+        "useBuiltIns": "usage",
+        "corejs": "3.8"
+      }
+    ],
+    ["minify", {"mangle": true,"deadcode": true,"evaluate": true, "simplify": true, "builtIns": true}]
+  ]
 }

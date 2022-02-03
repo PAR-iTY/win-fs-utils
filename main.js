@@ -39,7 +39,7 @@ import {
   cleanCwdSyncPipe,
   cleanPathAsyncPipe
 } from './pipe.js';
-import { tweakTags } from './ID3-tags.js';
+import { tweakTags } from './id3-tags.js';
 
 // npm modules
 import minimist from 'minimist';
@@ -85,7 +85,7 @@ const init = async () => {
   if (files.length && args.ext === '.mp3') {
     console.log('extension is mp3');
     if (args.tagType && args.tagReplace) {
-      console.log('passing to ID3-tags module..');
+      console.log('passing to id3-tags..');
       // CLI params for tag-type, find-str, and replace-str
       tweakTags(files, args.tagType, args.tagFind || undefined, args.tagReplace);
     }

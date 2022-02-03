@@ -63,9 +63,9 @@ const tweakTags = (files, tag, find, replace) => {
  */
 const tweakTagsObject = (tags, tag, find, replace) => {
   // console.log('tags: ', tags);
-  console.log(`tags.${tag}:`, tags[`${tag}`]);
+  console.log(`existing tags.${tag}:`, tags[`${tag}`]);
 
-  // ID3-tags.js will not be called if tag and replace args not supplied
+  // id3-tags.js will not be called if tag and replace args not supplied
   // find arg is optional
   if (find) {
     // match and edit an existing tag string
@@ -91,6 +91,8 @@ const tweakTagsObject = (tags, tag, find, replace) => {
     }
   }
 
+  console.log(`updated tags.${tag}:`, tags[`${tag}`]);
+
   return tags;
 };
 
@@ -99,7 +101,7 @@ const tweakTagsObject = (tags, tag, find, replace) => {
 /**
  * ID3 metadata editor.
  *
- * @module ID3-tags
+ * @module id3-tags
  *
  * */
 export { tweakTags, tweakTagsObject };

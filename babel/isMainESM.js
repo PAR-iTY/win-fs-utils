@@ -1,1 +1,1 @@
-import{fileURLToPath}from"url";import{extname}from"path";export default(a=>a&&(extname(process.argv[1])?`${process.argv[1]}`:`${process.argv[1]}.js`)===fileURLToPath(a));
+"use strict";require("core-js/modules/es.object.define-property.js"),Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;var _url=require("url"),_path=require("path"),_default=function(a){return a&&((0,_path.extname)(process.argv[1])?"".concat(process.argv[1]):"".concat(process.argv[1],".js"))===(0,_url.fileURLToPath)(a)};exports["default"]=_default;
