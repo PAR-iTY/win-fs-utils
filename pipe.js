@@ -1,16 +1,3 @@
-// --------------------------------------------------------------------------- //
-
-// move all functions that take input and return modified or unmodified input here
-// they all change the value as it passes through these functions in a pipe
-
-// perhaps all of these should not return _path on error: doesn't this introduce
-// oppertunities to run errored, potentially unsafe paths?
-// keep console.error + babel config for debugging and production error msgs
-// remove return _path for return false --> if any piped value returns false,
-// what happens? --> depends on each functions checks for falsyness
-
-// --------------------------------------------------------------------------- //
-
 import { fileURLToPath } from 'url';
 import { parse, sep, posix, join } from 'path';
 import { realpathSync } from 'fs';

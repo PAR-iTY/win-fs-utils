@@ -1,32 +1,3 @@
-// need a general refactor: functionalise init asap
-// args handler should look for mp3 edits as options
-// perhaps set an options object (other than args obj?)
-
-// coming up with mp3 metadata patterns to fix could be fun/awful
-
-// write an error handling / logging function (like the pipe one?)
-
-// DOCUMENT: GIT BASH ON WINDOWS: single backslash shell interpretation
-// guide for passing in paths without getting wierd backslash meanings
-
-// seems like [in bash] if i pass in --path "\some\path\with\ending\slash\"
-// i get null output, it just sorta sits there not even running
-// if i pass in --path "\some\path\without\ending\slash" its all gravy (??!)
-
-// must be something to do with single backslash shell interpretation
-
-// if user passes in a --path value like C:\Users\jim\Music
-// minimist will render it as 'C:UsersjimMusic'
-// if entered as "C:\Users\jim\Music" with quotes it will work
-// add this kind of note to the documentation/how-to
-
-// if user passes in a --path value like /e/E_Umit or /d/D_jims_store
-// minimist will render it as 'E:/E_Umit/' and 'D:/D_jims_store' etc
-// if entered as "" with quotes the result is the same
-// add this kind of note to the documentation/how-to
-
-// --------------------------------------------------------------------------- //
-
 console.time('import load time');
 
 // local modules
@@ -328,30 +299,13 @@ const getFiles = (_path, ext, recurse) => {
     '**/Documents and Settings/**',
     // likely convienent
     '**/node_modules/**',
+    // glob error: Error: EPERM: operation not permitted, scandir 'C:/Config.Msi'
+    'C:/*Config*',
+    // filepaths specific to personal external HDD
     // convienient non c-drive folder exclusions
     'F:/Utility/**',
     // attempt to handle system image scan errors
-    'F:/UMIT/OS/**',
-    // glob error: Error: EPERM: operation not permitted, scandir 'C:/Config.Msi'
-    'C:/*Config*'
-    // '**/*.Msi*',
-    // '/**/*Config.Msi',
-    // '/Config.Msi',
-    // '/**/*Config.Msi',
-    // '/**/*Config*',
-    // '**/*.Msi',
-    // '/**/*Config.Msi',
-    // '**/*Config.Msi*',
-    // '**/*CONFIG.MSI',
-    // '**/*config.msi',
-
-    // '**/*Config.Msi',
-    // '**/*CONFIG.MSI*',
-    // '**/*config.msi*',
-    // '**/*Config*',
-    // '**/*.MSI',
-    // '**/*.Msi',
-    // '**/*.msi'
+    'F:/UMIT/OS/**'
   ];
 
   // glob object

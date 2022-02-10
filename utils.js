@@ -1,19 +1,5 @@
 // --------------------------------------------------------------------------- //
 
-// no good reason to keep these functions inconsistent with pipe functions:
-// why bundle isSystemPath and inOS into a isSafeWinPath logic wrapper function?
-// when duplicate code exists in main/pipe.js and these functions are pipe-able?
-
-// move all functions that check input and return true or false information back
-// none of these utility functions alter the input or affect data transformation
-
-// perhaps these could be called 'checks' or 'bools' etc?
-// utils is good name for things like pipe / async utils
-// those utils don't pertain to the filesystem - they are
-// utils for code structure - for the dev.
-
-// --------------------------------------------------------------------------- //
-
 import { parse } from 'path';
 import { lstatSync } from 'fs';
 

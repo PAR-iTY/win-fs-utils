@@ -1,4 +1,4 @@
 .vscode/
 _xs/
 node_modules/
-run.sh
+run-win-fs-utils-basic.sh

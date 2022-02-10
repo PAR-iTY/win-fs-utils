@@ -1,6 +1,8 @@
+> work in progress personal project
+
 # win-fs-utils
 
-A work in progress personal project for batch filesystem and metadata tasks like post-processing other CLI tools like ffmpeg and youtube-dl and standardising and normalising metadata in my existing media libraries
+CLI tool for batch filesystem and metadata tasks like post-processing other CLI tools like ffmpeg and youtube-dl and standardising and normalising metadata in my existing media libraries
 
 Currently mostly consists of composed pipes to handle handle CLI arguments and feed valid filesystem inputs to glob search. Features some handling of different shell string inputs and filepath error handling. CLI user experience minded features like informative logging, prompting the user, and protection from accidentally searching or editing dangerous windows 10 system paths
 
