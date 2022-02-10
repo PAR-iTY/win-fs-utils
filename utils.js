@@ -28,8 +28,6 @@ const isFile = _path => lstatSync(_path).isFile();
 
 // --------------------------------------------------------------------------- //
 
-// do i need/even use this?
-
 /**
  * Returns true if value exists and is a string.
  * *

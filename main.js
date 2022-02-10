@@ -103,7 +103,7 @@ const argsHandle = async () => {
     // extname() always returns a dot .{ext} if an extension exists
     args.ext = extname(args.path);
   } else {
-    console.log('ext error', args.ext);
+    console.log('no extension detected');
   }
 
   // normalise to lower case

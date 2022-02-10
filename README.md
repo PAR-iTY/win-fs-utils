@@ -34,9 +34,7 @@ This project is also first attempt at a functional design pattern library and im
 - use pipes more generally across scripts especially main.js
 - refactor init function to functionalise and for readability
 - add keyword search
-- add more ID3 editing functionality
 - publish isMainESM.js as seperate npm module and consume as a dependency
 - refactor function params to use defaults where useful
 - shift win10 system path protection from search into editing so you can search but not edit them
-- look at libraries like mutagen and file-renaming strategies (subprocess or Node.js?)
-- rename ID3-tags.js to avoid camel case confusion and keep to js standards
+- look at libraries like mutagen and file-renaming strategies

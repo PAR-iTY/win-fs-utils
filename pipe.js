@@ -21,9 +21,6 @@ const realPath = _path => realpathSync(_path);
  */
 const posixPath = _path => _path.split(sep).join(posix.sep);
 // ensure _path is a posix path
-// https://stackoverflow.com/a/63251716
-// do I not need to try/catch this because of how the path lib handles things?
-// what does this do if i throw a invalid path or not-a-string at this?
 
 // --------------------------------------------------------------------------- //
 
@@ -147,7 +144,6 @@ const cleanBashRoot = _path => {
  * Create a n pipe composer using spread and reduce.
  *
  * Is fully synchronous and does not handle promises.
- * Only keeping to minimise async/await functions.
  *
  * @function syncPipe
  * @return {function} The pipe composer function.
@@ -161,7 +157,6 @@ const syncPipe =
 // --------------------------------------------------------------------------- //
 
 // returns a function that contains promises
-// from: https://stackoverflow.com/a/60137179
 const asyncPipe =
   (...funcs) =>
   val =>
@@ -195,7 +190,7 @@ const sleep = _path => {
 // returns value back to pipe after logging
 const log = x => {
   // is it possible to detect the previous function name?
-  // solution: wrap call to log in another function with 2 args
+  // a solution: wrap call to log in another function with 2 args
   // args are x and a optional message to explain what is being logged
   console.log('pipe-log:', x);
   return x;
