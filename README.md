@@ -14,7 +14,7 @@ glob search, path normalisation, mp3 metadata editing, shell and node.js argumen
 - pipe.js contains functions that run checks and alter input and return output
 - utils.js contains functions that run checks and return booleans
 - main.js drives argument handling and glob search functionality
-- run-win-fs-utils.sh generates production-ready javascript and JSDoc documentation
+- build-win-fs-utils.sh configures and builds project with babel and JDdoc, then generates production-ready ECMAScript and JSDoc documentation
 
 ## inspiration
 
