@@ -2,40 +2,46 @@
 
 # win-fs-utils
 
-CLI tool for batch filesystem and metadata tasks like post-processing other CLI tools like ffmpeg and youtube-dl and standardising and normalising metadata in my existing media libraries
+CLI tool for batch filesystem and metadata tasks like post-processing other CLI tools like ffmpeg and youtube-dl and standardising and normalising metadata in my existing media libraries. Project also uses production-ready Babel configuration and JSDoc documentation.
 
-Currently mostly consists of composed pipes to handle handle CLI arguments and feed valid filesystem inputs to glob search. Features some handling of different shell string inputs and filepath error handling. CLI user experience minded features like informative logging, prompting the user, and protection from accidentally searching or editing dangerous windows 10 system paths
+Currently mostly consists of composed pipes to handle handle CLI arguments and feed valid filesystem inputs to glob search. Features some handling of different shell string inputs and filepath error handling. CLI user experience minded features like informative logging, prompting the user, and protection from accidentally searching or editing dangerous windows 10 system paths.
 
 ## how to use
 
-to use call main.js script from project root with `node main`
+### `node main`
+
+call main.js script from project root
 
 optionally can add the following parameters:
 
-`node main --path <path>`
+### `node main --path <path>`
 
 - enter the file system path to search in
 
-  `node main --recurse`
+### `node main --recurse`
 
 - set search to be recursive
 
-  `node main --ext <extension>`
-  only search for files of a specific extension
+### `node main --ext <extension>`
+
+- only search for files of a specific extension
 
 if searching for mp3 file(s):
 
-`node main --tagType <tag-type>`
+### `node main --tagType <tag-type>`
 
 - the ID3 tag type or name i.e. 'artist' or 'album'
+- required for altering mp3 metadata
 
-  `node main --tagFind <tag-value-to-replace>`
+### `node main --tagFind <tag-value-to-replace>`
 
 - for editing a specific substring of the selected tag's current value
+- optional, if left out entire tag value will be replaced
 
-  `node main --tagReplace <new-tag-value>`
+### `node main --tagReplace <new-tag-value>`
 
 - the new value to be inserted either for the specified substring or the whole tag value
+- required for altering mp3 metadata
 
 i.e. `node main --path ~/music/beyonce --recurse --ext mp3 --tagType artist --tagFind Bey --tagReplace Hey` would convert all 'Beyonce' songs into 'Heyonce' songs
 
