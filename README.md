@@ -6,6 +6,39 @@ CLI tool for batch filesystem and metadata tasks like post-processing other CLI 
 
 Currently mostly consists of composed pipes to handle handle CLI arguments and feed valid filesystem inputs to glob search. Features some handling of different shell string inputs and filepath error handling. CLI user experience minded features like informative logging, prompting the user, and protection from accidentally searching or editing dangerous windows 10 system paths
 
+## how to use
+
+to use call main.js script from project root with `node main`
+
+optionally can add the following parameters:
+
+`node main --path <path>`
+
+- enter the file system path to search in
+
+  `node main --recurse`
+
+- set search to be recursive
+
+  `node main --ext <extension>`
+  only search for files of a specific extension
+
+if searching for mp3 file(s):
+
+`node main --tagType <tag-type>`
+
+- the ID3 tag type or name i.e. 'artist' or 'album'
+
+  `node main --tagFind <tag-value-to-replace>`
+
+- for editing a specific substring of the selected tag's current value
+
+  `node main --tagReplace <new-tag-value>`
+
+- the new value to be inserted either for the specified substring or the whole tag value
+
+i.e. `node main --path ~/music/beyonce --recurse --ext mp3 --tagType artist --tagFind Bey --tagReplace Hey` would convert all 'Beyonce' songs into 'Heyonce' songs
+
 ## includes
 
 glob search, path normalisation, mp3 metadata editing, shell and node.js argument handling, posix and win32 and \*nix paths, forbids windows system paths and more
