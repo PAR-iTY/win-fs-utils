@@ -26,7 +26,7 @@ Currently mostly consists of composed pipes to handle handle CLI arguments and f
 
 - only search for files of a specific extension
 
-### if searching for abd editing mp3 file(s):
+### if searching for and editing mp3 file(s):
 
 #### `node main --tagType <tag-type>`
 
@@ -43,7 +43,9 @@ Currently mostly consists of composed pipes to handle handle CLI arguments and f
 - the new value to be inserted either for the specified substring or the whole tag value
 - required for altering mp3 metadata
 
-i.e. `node main --path ~/music/beyonce --recurse --ext mp3 --tagType artist --tagFind Bey --tagReplace Hey` would convert all 'Beyonce' songs into 'Heyonce' songs
+i.e:
+`node main --path ~/music/beyonce --recurse --ext mp3 --tagType artist --tagFind Bey --tagReplace Hey`
+would convert all 'Beyonce' songs into 'Heyonce' songs
 
 ## includes
 
@@ -66,7 +68,6 @@ This project is also first attempt at a functional design pattern library and im
 - to learn about differences in windows and \*nix filesystems, shells, paths, posix
 - to handle these differences and implement a glob search to access files in Node.js
 - to develop a custom function composition design pattern that consumes pipe.js functions
--
 
 ## todo:
 
